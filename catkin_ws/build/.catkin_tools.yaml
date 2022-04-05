@@ -1,0 +1,6 @@
+devel_space: "/home/camilo/Documents/Rob\xF3tica/LAB1_ROB_UNAL_20221_CAMILO_VALENCIA_SARA_JIMENEZ/catkin_ws/devel"
+install: false
+install_space: "/home/camilo/Documents/Rob\xF3tica/LAB1_ROB_UNAL_20221_CAMILO_VALENCIA_SARA_JIMENEZ/catkin_ws/install"
+profile: default
+source_space: "/home/camilo/Documents/Rob\xF3tica/LAB1_ROB_UNAL_20221_CAMILO_VALENCIA_SARA_JIMENEZ/catkin_ws/src"
+workspace: "/home/camilo/Documents/Rob\xF3tica/LAB1_ROB_UNAL_20221_CAMILO_VALENCIA_SARA_JIMENEZ/catkin_ws"

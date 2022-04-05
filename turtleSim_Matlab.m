@@ -9,3 +9,5 @@ velMsg = rosmessage(velPub);
 velMsg.Linear.X = 1; %Valor del mensaje
 send(velPub,velMsg); %Envio
 pause(1)
+
+%Falta agregar suscripción al tópico Pose en turtle1, script para enviar todos los valores a la pose turtle1, cómo finalizar el nodo maestro desde matlab
