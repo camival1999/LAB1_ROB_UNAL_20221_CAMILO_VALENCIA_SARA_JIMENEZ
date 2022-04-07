@@ -1,32 +1,49 @@
 %% Arranque del nodo maestro de ROS en Matlab
-rosinit; 
+    rosinit; 
 
 %% Crea un publicador para cmd_vel y su respectivo mensaje
-[velPub, velMsg] = rospublisher('/turtle1/cmd_vel','geometry_msgs/Twist'); 
+    [velPub, velMsg] = rospublisher('/turtle1/cmd_vel','geometry_msgs/Twist'); 
 
 %% Asignamos un valor al mensaje, en este caso una combinación de avance y rotación n formato Twist y lo enviamos con el publicador
-    velMsg.Linear.X = 2;
-    velMsg.Linear.Y = 0;
-    velMsg.Linear.Z = 0;
+    velMsg.Linear.X  = 2;
+    velMsg.Linear.Y  = 0;
+    velMsg.Linear.Z  = 0;
     velMsg.Angular.X = 0;
     velMsg.Angular.Y = 0;
     velMsg.Angular.Z = 5;
     send(velPub,velMsg); %Envio
     pause(2)
-    velMsg.Linear.X = 4;
-    velMsg.Linear.Y = 0;
-    velMsg.Linear.Z = 0;
+
+    velMsg.Linear.X  = 4;
+    velMsg.Linear.Y  = 0;
+    velMsg.Linear.Z  = 0;
     velMsg.Angular.X = 0;
     velMsg.Angular.Y = 0;
     velMsg.Angular.Z = 1;
     send(velPub,velMsg); %Envio
-%Falta agregar script para enviar todos los valores a la pose turtle1, cómo finalizar el nodo maestro desde matlab
+
 %% Subscripción a tópico de pose en turtle1
 %Definimos el subscriber al topico pose, con el tipo de mensaje obtenido usando en terminal el comando "rostopic info /turtle1/pose"
-poseSub = rossubscriber('/turtle1/pose','turtlesim/Pose'); 
-pause(1);
-msgPose = receive(poseSub);
-msgPose
+    poseSub = rossubscriber('/turtle1/pose','turtlesim/Pose'); 
+    pause(1); %Pausa opara permitir que la subscripción se procese
+%Usamos la función "receive()" para poner al subscriptor en modo "escucha",a la espera de que se transmita un mensaje del tópico
+    msgPose = receive(poseSub)
 
+%% Envío de una pose aleatoria a turtle1
+%Los servicios son un sistema de comunicacion a dos vias, con un cliente
+%que pide información o envía solicitudes y un servidor que responde.
+%Usamos el servidor/servicio de "/turtle1/teleport_absolute" para
+%introducir la pose de la tortuga directamente a través de un cliente que
+%definimos como:
+    poseClient = rossvcclient("/turtle1/teleport_absolute","DataFormat","object"); %Creación del cliente
+    poseReq = rosmessage(poseClient); % Obtenemos el mensaje que necesita el servidor para la comunicación.
+    waitForServer(poseClient,"Timeout",3) %Esperamos a que el cliente se conecte con el servidor de forma exitosa
+%Introducimos los valores deseados de la pose
+    poseReq.X = 3;
+    poseReq.Y = 7;
+    poseReq.Theta = 1.57;
+%Enviamos 
+    poseResp = call(poseClient,poseReq,"Timeout",3);
+    
 %% Finalizar nodo maestro de ROS en Matlab
-rosshutdown;
+    rosshutdown;
