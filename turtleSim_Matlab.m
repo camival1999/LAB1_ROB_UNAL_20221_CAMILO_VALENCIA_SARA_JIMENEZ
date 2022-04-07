@@ -30,7 +30,8 @@
     msgPose = receive(poseSub)
 
 %% Envío de una pose aleatoria a turtle1
-%Falta agregar script para enviar todos los valores a la pose turtle1, revisar rosnode info /turtlesim -> servicios
+%Falta agregar script para enviar todos los valores a la pose turtle1,
+%revisar rosnode info /turtlesim -> servicios, rosservice call /turtle1/teleport_absolute '{x: 5.5, y: 5.5, theta: 0.0}', rosservice call /clear
 
 %% Finalizar nodo maestro de ROS en Matlab
     rosshutdown;
