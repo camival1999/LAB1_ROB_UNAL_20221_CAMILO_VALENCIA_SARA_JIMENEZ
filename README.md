@@ -17,6 +17,12 @@ Empleando como guía el artículo compartido (http://www.informit.com/blogs/blog
 8. `mv`. Como se puede intuir, proviene del inglés "move" y permite mover archivos o directorios a la ubicación deseada.
 9. `cp`. En lugar de mover archivos y/o directorios, los copia.
 10. `man`. El comando más útil si se desea revisar información adicional de un comando, muestra el manual del comando que especifiquemos.
+ 
+Aquí podemos ver el resultado de correr cada uno de estos comandos en orden:
+![Screenshot from 2022-04-07 18-42-22](https://user-images.githubusercontent.com/55710287/162336786-a43e6b44-1382-4de6-82ef-d69f93cbb326.png)
+Y el manual de usuario resultante al llamar `man rm`:
+![Screenshot from 2022-04-07 18-42-11](https://user-images.githubusercontent.com/55710287/162336791-09f16a88-31df-419b-9d3d-1c5191302810.png)
+
 
 ### Análisis
 Como se puede observar, el terminal de comandos es una gran herramienta para moverse por el sistema de archivos del sistema, y así mismo generar los cambios y modificaciones necesarios de manera ágil. Adicionalemente hay que tener en cuenta el tema de permisos, para lo cual podemos usar el comando prefijo `sudo` y correr el comando que le sigue con permisos de administrador, permitiendo realizar acciones que no serían posibles de otra manera como la eliminación de archivos protegidos o la vista de ciertos archivos ocultos.
