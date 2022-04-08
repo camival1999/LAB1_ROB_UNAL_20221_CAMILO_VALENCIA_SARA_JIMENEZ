@@ -69,16 +69,15 @@ Para conocer los tipos se puede usar el comando:`rosservice call /turtle1/telepo
 Luego iniciando con las funciones tenemos la de conseguir la tecla `getkey` esta fue sacada del planteamiento del taller donde plantean usar la librería termios, esta retorna un valor c que es un binario con la tecla, es decir si presiohnar la tecla W esta función retorna `b'w'` 
 
 La siguiente función `moverLaTortuga` permite crear un mensaje tipo Twist y lo publica por medio del Publisher de nuestro nodo, este mensaje "velocidad" contiene los 6 valores de la velovidad linear y angular en los 3 ejes. 
-`       #configuración vel linal en x 
-        velocidad.linear.x=velLinear
-        velocidad.linear.y=0
-        velocidad.linear.z=0
-        #Configuración vel angular 
-        velocidad.angular.x=0
-        velocidad.angular.y=0
-        velocidad.angular.z=velAngular
+`       #configuración vel linal en x `
+`        velocidad.linear.x=velLinear`
+`        velocidad.linear.y=0`
+`        velocidad.linear.z=0`
+`        #Configuración vel angular` 
+`        velocidad.angular.x=0`
+`        velocidad.angular.y=0`
+`        velocidad.angular.z=velAngular`
 
-`
 
 la primera función se encarga 
 
