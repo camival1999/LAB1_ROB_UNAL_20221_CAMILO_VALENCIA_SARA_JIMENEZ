@@ -56,6 +56,22 @@ Como se pudo observar, es posible tener un manejo completo de ROS desde Matlab, 
 ## Sección C:
 
 ### Metodología y Resultados:
+Para realizar este trabajo se inició revisarndo qué topico y servicios se necesitaban usar para lograr cumplir los objetivos del trabajo, estos eran:
+- /turtle1/cmd_vel: Permite modificar la velocidad lineal y angular, util para la tarea de desplazarse hacia adelante y atras usando las teclas "W" y "S" y girar en sentido horiario y antihorario usando las teclas"A" y "D" 
+- /turtle1/teleport_absolute: Permite ubicar la tortuga en un lugar especifico del espacio usando cómo marco de referencia el mundo, por lo que se dirige a la posición especificada por coordenadas, fue usado al momento de querer regresar al punto inicial 
+- /turtle1/teleport_relative: Permite mover la tortuga desde su posición actual en sentido lineal y giros angulares, fue usado al momento de girar 180 grados.
+
+El código consiste en un adeclaración e nodo, 4 funciones y un main.
+En la primera parte se debe declarar el nodo y sus elementos que van a ser usados, por esta razón se crearon los dos Proxys para los servicios y el Publisher para el tópico, en estos se llama cada uno y el tipo de dato que recibe, en el caso del Publisher se usa un mensaje tipo Twist y en los servicios son tipo TeleportAbsolut y TeleportRelative. 
+
+Para conocer los tipos se puede usar el comando:`rosservice call /turtle1/teleport_absolute `
+
+Luego iniciando con las funciones tenemos la de conseguir la tecla `getkey` esta fue sacada del planteamiento del taller donde plantean usar la librería termios, esta retorna un valor c que es un binario con la tecla, es decir si presiohnar la tecla W esta función retorna `b'w'` 
+
+
+
+la primera función se encarga 
+
 
 ### Análisis:
 
