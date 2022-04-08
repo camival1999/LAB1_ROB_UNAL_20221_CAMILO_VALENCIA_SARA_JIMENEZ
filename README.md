@@ -83,6 +83,7 @@ Las siguientes dos funciones son muy similares ya que solo se llama el servicio 
 
 Por último el main se engarga de que según la tecla detectada se usa cada una de las diferentes funciones previamente definidas. 
 
+Finalmente no en el script se creó una linea en `CMakeLists.txt` para incluir el script previamente realizado`scripts/myTeleop.py`
 
 ### Análisis:
 
