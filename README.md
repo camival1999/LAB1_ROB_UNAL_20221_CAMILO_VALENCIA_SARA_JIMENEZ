@@ -77,11 +77,15 @@ La siguiente función `moverLaTortuga` permite crear un mensaje tipo Twist y lo 
 `        velocidad.angular.x=0`
 `        velocidad.angular.y=0`
 `        velocidad.angular.z=velAngular`
+Esta función recibe dos entradas la velocidad linear y la angular.
 
+Las siguientes dos funciones son muy similares ya que solo se llama el servicio y se le entregan los parámetros requeridos, en el cado de la `teleAbsLaTortuga()` la posición central se encuentra cuando la coordenada x y y están en 5.5 y el ángulo en ceros. Luego para la función `teleRelTortuga()` se usa pi importado de numpy para girar un valor de pi que es equivalente a 180 grados. 
 
-la primera función se encarga 
+Por último el main se engarga de que según la tecla detectada se usa cada una de las diferentes funciones previamente definidas. 
 
 
 ### Análisis:
+
+Este ejercicio es muy interesante ya que permite no solo conocer cómo funcionan los topicos y los servicios, pero tambien permitió crear un script ejecutable que permite realizar estas funciones desde la consola solo presionando teclas. Una de las dificultades que encontré fue al momento de usar el nodo ya que desconocía que solo se puede crear un nodo por script, por lo que se pudo solucionar creandolo cómo una variable global.
 
 ## Conclusiones:
