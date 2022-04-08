@@ -1,0 +1,10 @@
+<launch>
+  <param name="/sim/background_r" value="255" />
+  <param name="/sim/background_g" value="209" />
+  <param name="/sim/background_b" value="220" />
+  <node
+    pkg="turtlesim" 
+    name="sim" 
+    type="turtlesim_node">
+  </node>
+</launch>
