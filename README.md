@@ -56,7 +56,44 @@ Como se pudo observar, es posible tener un manejo completo de ROS desde Matlab, 
 ## Sección C:
 
 ### Metodología y Resultados:
+Para realizar este trabajo se inició revisarndo qué topico y servicios se necesitaban usar para lograr cumplir los objetivos del trabajo, estos eran:
+- /turtle1/cmd_vel: Permite modificar la velocidad lineal y angular, util para la tarea de desplazarse hacia adelante y atras usando las teclas "W" y "S" y girar en sentido horiario y antihorario usando las teclas"A" y "D" 
+- /turtle1/teleport_absolute: Permite ubicar la tortuga en un lugar especifico del espacio usando cómo marco de referencia el mundo, por lo que se dirige a la posición especificada por coordenadas, fue usado al momento de querer regresar al punto inicial 
+- /turtle1/teleport_relative: Permite mover la tortuga desde su posición actual en sentido lineal y giros angulares, fue usado al momento de girar 180 grados.
+
+El código consiste en un adeclaración e nodo, 4 funciones y un main.
+En la primera parte se debe declarar el nodo y sus elementos que van a ser usados, por esta razón se crearon los dos Proxys para los servicios y el Publisher para el tópico, en estos se llama cada uno y el tipo de dato que recibe, en el caso del Publisher se usa un mensaje tipo Twist y en los servicios son tipo TeleportAbsolut y TeleportRelative. 
+
+Para conocer los tipos se puede usar el comando:`rosservice call /turtle1/teleport_absolute `
+
+Luego iniciando con las funciones tenemos la de conseguir la tecla `getkey` esta fue sacada del planteamiento del taller donde plantean usar la librería termios, esta retorna un valor c que es un binario con la tecla, es decir si presiohnar la tecla W esta función retorna `b'w'` 
+
+La siguiente función `moverLaTortuga` permite crear un mensaje tipo Twist y lo publica por medio del Publisher de nuestro nodo, este mensaje "velocidad" contiene los 6 valores de la velovidad linear y angular en los 3 ejes. 
+`       #configuración vel linal en x `
+`        velocidad.linear.x=velLinear`
+`        velocidad.linear.y=0`
+`        velocidad.linear.z=0`
+`        #Configuración vel angular` 
+`        velocidad.angular.x=0`
+`        velocidad.angular.y=0`
+`        velocidad.angular.z=velAngular`
+Esta función recibe dos entradas la velocidad linear y la angular.
+
+Las siguientes dos funciones son muy similares ya que solo se llama el servicio y se le entregan los parámetros requeridos, en el cado de la `teleAbsLaTortuga()` la posición central se encuentra cuando la coordenada x y y están en 5.5 y el ángulo en ceros. Luego para la función `teleRelTortuga()` se usa pi importado de numpy para girar un valor de pi que es equivalente a 180 grados. 
+
+Por último el main se engarga de que según la tecla detectada se usa cada una de las diferentes funciones previamente definidas. 
+
+Finalmente no en el script se creó una linea en `CMakeLists.txt` para incluir el script previamente realizado`scripts/myTeleop.py`
 
 ### Análisis:
 
+Este ejercicio es muy interesante ya que permite no solo conocer cómo funcionan los topicos y los servicios, pero tambien permitió crear un script ejecutable que permite realizar estas funciones desde la consola solo presionando teclas. Una de las dificultades que encontré fue al momento de usar el nodo ya que desconocía que solo se puede crear un nodo por script, por lo que se pudo solucionar creandolo cómo una variable global.
+
 ## Conclusiones:
+- El terminal es una herramienta extremadamente útil para manejar el sistema de archivos, además de tener ciertas capacidades que no son posible de alcanzar mediante las alternativas con GUI.
+- Matlab a su vez tiene una gran capacidad para automatizar procesos en ROS como la recolección de datos, realizar cálculos complejos, algoritmos de evasión de objetos y mucho más.
+- Es posible obtener en Matlab toda la información que proporciona ROS en el terminal, de una manera más organizada al poder emplear todas las capcidades del software destinadas al manejo de datos.
+- Se debe tener en cuenta el manejo de nodos, especialmente los maestro dentro de Matlab, pues no es posible correr más de una instancia del mismo, al igual que las relaciones de publicador/suscriptor entre ellos.
+- Los servicios pueden resultar de gran utilidad para poder manipular parámetros que no serían accesibles de forma directa de otras maneras.
+- Python es una excelente herramienta para manejar la interfaz humano máquina, además de todas las ventajas que nos ofrece este lenguaje como librerías, estructuras de datos, etc.
+- Además permite ejectuar complejas rutinas de manera sencila en un solo comando del terminal con ROS configurado.
